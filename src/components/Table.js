@@ -2,7 +2,7 @@ import { Component } from "react";
 
 const TableHead = () => {
   return (
-    <thead>
+<thead className="thead-inverse">
       <tr>
         <th>Id</th>
         <th>Name</th>
@@ -15,6 +15,7 @@ const TableHead = () => {
 
 
 
+
 const TableBody = (props) => {
     let {users, deleteTr} = props; 
     console.log({props})
@@ -24,7 +25,7 @@ const TableBody = (props) => {
               <td>{index + 1}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
-              <td><button onClick={() => deleteTr(index)}>Delete</button></td>
+              <td><button className="btn btn-danger" onClick={() => deleteTr(index)}>Delete</button></td>
             </tr>
         );
     });
@@ -40,7 +41,7 @@ const TableBody = (props) => {
 class Table extends Component {
   render() {
     const {users, deleteTr} = this.props;
-    return (<table>
+    return (<table className="table table-striped table-inverse table-responsive">
         <TableHead/>
         <TableBody deleteTr={deleteTr}  users={users}/>
     </table>);

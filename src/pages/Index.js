@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Form from "../components/Form";
 import Table from "../components/Table"
+import Users from "../components/Users"
 
 
 class Index extends Component{
@@ -46,7 +47,7 @@ class Index extends Component{
                 <h1>Table 1</h1>
                 <Table  deleteTr={this.deleteTr} users={users}/>
                 <Form handelSubmit={this.handelSubmit} />
-                <h1>Table 2</h1>
+                <Users/>
             </div>
         );
     }
