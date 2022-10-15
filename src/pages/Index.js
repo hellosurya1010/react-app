@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Form from "../components/Form";
 import Table from "../components/Table"
 
 
@@ -32,6 +33,11 @@ class Index extends Component{
         this.setState({users: users});
     }
 
+    handelSubmit = (newUser) => {
+        let users = [...this.state.users, newUser];
+        this.setState({users});
+    }
+
     render(){
 
         const {users} = this.state;
@@ -39,6 +45,7 @@ class Index extends Component{
             <div>
                 <h1>Table 1</h1>
                 <Table  deleteTr={this.deleteTr} users={users}/>
+                <Form handelSubmit={this.handelSubmit} />
                 <h1>Table 2</h1>
             </div>
         );

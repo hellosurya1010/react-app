@@ -7,6 +7,7 @@ const TableHead = () => {
         <th>Id</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Action</th>
       </tr>
     </thead>
   );
@@ -20,7 +21,7 @@ const TableBody = (props) => {
     const rows = users.map((user, index) => {
         return (
             <tr key={index}>
-              <td>{user.id}</td>
+              <td>{index + 1}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td><button onClick={() => deleteTr(index)}>Delete</button></td>
