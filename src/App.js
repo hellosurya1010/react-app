@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import AddUserForm from './components/Forms/AddUserForm';
+import UserTable from './components/Tables/Users';
 
 function App() {
+   const usersData = [
+    {
+      name: "Surya",
+      email: "Surya@gmail.com"
+    },
+    {
+      name: "Mani",
+      email: "Mani@gmail.com"
+    },
+    {
+      name: "Sesha",
+      email: "Sesha@gmail.com"
+    },
+  ];
+
+const deleteUser = (index) => {
+  users = users.filter((value, i) => index !== i );
+  console.log(users);
+  setUser(users);
+}
+const updateUser = (index) => {
+
+}
+  
+  let [users, setUser] = useState(usersData);
+  
+  const addUser = (user) => {
+    setUser([...users, user]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello Surya
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <AddUserForm addUser={addUser}/>
+    <UserTable updateUser={updateUser} deleteUser={deleteUser}  users={users}/>
+    </>
   );
 }
 
