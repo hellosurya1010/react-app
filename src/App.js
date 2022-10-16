@@ -1,42 +1,46 @@
 import { useState } from 'react';
-import AddUserForm from './components/Forms/AddUserForm';
-import UserTable from './components/Tables/Users';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
+import { BrowserRouter as Routes, Route, useRoutes} from 'react-router-dom';
+import Error404 from './pages/Errors';
+import CreateUser from './pages/CreateUser';
+
+
+const Links = () =>{
+  return useRoutes([
+    {
+      path: '/',
+      element: <Home/>
+    },
+    {
+      path: '/about',
+      element: <About/>
+    },
+    {
+      path: '/contact',
+      element: <Contact/>
+    },
+    {
+      path: '/user/create',
+      element: <CreateUser/>
+    },
+    {
+      element: <Error404/>
+    }
+  ]);
+}
+
 
 function App() {
-   const usersData = [
-    {
-      name: "Surya",
-      email: "Surya@gmail.com"
-    },
-    {
-      name: "Mani",
-      email: "Mani@gmail.com"
-    },
-    {
-      name: "Sesha",
-      email: "Sesha@gmail.com"
-    },
-  ];
-
-const deleteUser = (index) => {
-  users = users.filter((value, i) => index !== i );
-  console.log(users);
-  setUser(users);
-}
-const updateUser = (index) => {
-
-}
-  
-  let [users, setUser] = useState(usersData);
-  
-  const addUser = (user) => {
-    setUser([...users, user]);
-  }
-
   return (
     <>
-    <AddUserForm addUser={addUser}/>
-    <UserTable updateUser={updateUser} deleteUser={deleteUser}  users={users}/>
+      <Routes>
+        <Navbar/>
+        <Links/>
+      </Routes>
     </>
   );
 }

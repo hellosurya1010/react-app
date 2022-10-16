@@ -1,0 +1,11 @@
+const Error404 = _ => {
+    return (
+        <div>
+            <h1>Page Not Found 404</h1>
+        </div>
+    );
+}
+
+export default Error404;
+
+
